@@ -1,0 +1,65 @@
+.rag-panel {
+  padding: 0.5rem;
+  font-size: 13px;
+}
+
+.rag-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.rag-row--ingest input[name="ingest-url"] {
+  flex: 1;
+}
+
+.rag-row button {
+  white-space: nowrap;
+}
+
+.rag-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.rag-empty {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.rag-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rag-chat-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.rag-chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rag-chat-input textarea {
+  flex: 1;
+  resize: vertical;
+}
+
+.rag-chat-message {
+  margin-bottom: 0.25rem;
+}
+
+.rag-chat-user {
+  font-weight: bold;
+}
+
+.rag-chat-assistant {
+  font-style: italic;
+}

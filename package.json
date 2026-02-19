@@ -1,0 +1,14 @@
+{
+  "name": "foundry-rag-assistant",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "zip": "npm run build && cd .. && zip -r foundry-rag-assistant.zip foundry-rag-assistant -x \"**/node_modules/**\" \"**/dist/*.map\""
+  },
+  "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "latest",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0"
+  }
+}

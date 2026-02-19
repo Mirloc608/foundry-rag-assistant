@@ -1,0 +1,58 @@
+<div class="rag-panel">
+  <div class="rag-row rag-row--ingest">
+    <input type="text" name="ingest-url" placeholder="https://example.com/doc" />
+    <button type="button" data-action="ingest-url">
+      {{localize "RAG.IngestURL"}}
+    </button>
+  </div>
+
+  <div class="rag-row rag-row--actions">
+    <button type="button" data-action="ingest-journals">
+      {{localize "RAG.IngestJournals"}}
+    </button>
+    <button type="button" data-action="refresh">
+      {{localize "RAG.Refresh"}}
+    </button>
+  </div>
+
+  <hr />
+
+  <h3>{{localize "RAG.Models"}}</h3>
+  <ul class="rag-list rag-list--models">
+    {{#if models.length}}
+      {{#each models}}
+        <li>{{this}}</li>
+      {{/each}}
+    {{else}}
+      <li class="rag-empty">No models reported from backend.</li>
+    {{/if}}
+  </ul>
+
+  <h3>{{localize "RAG.Chunks"}}</h3>
+  <ul class="rag-list rag-list--chunks">
+    {{#if chunks.length}}
+      {{#each chunks}}
+        <li>
+          <div class="rag-chunk-header">
+            <span class="rag-chunk-type">
+              {{#if this.payload.type}}{{this.payload.type}}{{else}}unknown{{/if}}
+            </span>
+            <span class="rag-chunk-score">
+              score: {{this.score}}
+            </span>
+          </div>
+          <div class="rag-chunk-meta">
+            {{#if this.payload.name}}
+              <strong>{{this.payload.name}}</strong>
+            {{/if}}
+            {{#if this.payload.url}}
+              <span class="rag-chunk-url">{{this.payload.url}}</span>
+            {{/if}}
+          </div>
+        </li>
+      {{/each}}
+    {{else}}
+      <li class="rag-empty">No chunks retrieved yet. Ask the assistant a question.</li>
+    {{/if}}
+  </ul>
+</div>
