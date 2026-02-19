@@ -1,17 +1,27 @@
 {
   "RAG.Title": "RAG Assistant",
   "RAG.Description": "Scene-aware RAG assistant for Foundry VTT.",
+
   "RAG.PanelTitle": "RAG Control Panel",
   "RAG.ChatTitle": "RAG Chat",
+
   "RAG.Setting.BackendURL": "RAG Backend URL",
-  "RAG.Setting.BackendURL.Hint": "Base URL for the RAG backend (e.g. https://foundry.dmathome.com/rag).",
+  "RAG.Setting.BackendURLHint": "Base URL for the RAG backend (e.g. https://foundry.dmathome.com/rag).",
+
   "RAG.Setting.AuthToken": "RAG Auth Token",
-  "RAG.Setting.AuthToken.Hint": "Optional bearer token to send with RAG requests.",
+  "RAG.Setting.AuthTokenHint": "Optional bearer token to send with RAG requests.",
+
+  "RAG.Setting.Model": "Default Model",
+  "RAG.Setting.ModelHint": "Select the default model for chat generation.",
+
   "RAG.IngestURL": "Ingest URL",
   "RAG.IngestJournals": "Ingest Journals",
   "RAG.Refresh": "Refresh",
   "RAG.Models": "Models",
   "RAG.Chunks": "Retrieved Chunks",
+
   "RAG.ChatPlaceholder": "Ask the assistant...",
-  "RAG.Send": "Send"
+  "RAG.Send": "Send",
+
+  "RAG.ClearScene": "Clear Scene Memory"
 }
