@@ -5,8 +5,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.on("getSceneControlButtons", (controls: any) => {
-  // In Foundry V12+ and V13, the array of control groups is in controls.controls
-  const groups = controls.controls;
+  const groups = controls.controls;   // V13 API
   if (!Array.isArray(groups)) return;
 
   const tokenControls = groups.find((c: any) => c.name === "token");
@@ -20,5 +19,6 @@ Hooks.on("getSceneControlButtons", (controls: any) => {
     onClick: () => new RagControlPanel().render(true)
   });
 });
+
 
 

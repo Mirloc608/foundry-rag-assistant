@@ -6,10 +6,10 @@
   "RAG.ChatTitle": "RAG Chat",
 
   "RAG.Setting.BackendURL": "RAG Backend URL",
-  "RAG.Setting.BackendURLHint": "Base URL for the RAG backend (e.g. https://foundry.dmathome.com/rag).",
+  "RAG.Setting.BackendURLHint": "Base URL for the RAG backend.",
 
   "RAG.Setting.AuthToken": "RAG Auth Token",
-  "RAG.Setting.AuthTokenHint": "Optional bearer token to send with RAG requests.",
+  "RAG.Setting.AuthTokenHint": "Optional bearer token for RAG requests.",
 
   "RAG.Setting.Model": "Default Model",
   "RAG.Setting.ModelHint": "Select the default model for chat generation.",
