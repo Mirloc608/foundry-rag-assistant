@@ -2,7 +2,7 @@
   "id": "foundry-rag-assistant",
   "title": "Foundry RAG Assistant",
   "description": "Scene-aware RAG assistant for Foundry VTT.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
