@@ -5,10 +5,11 @@ Hooks.once("init", () => {
 });
 
 Hooks.on("getSceneControlButtons", (controls: any) => {
-  // V11: controls.controls is the array
-  const buttons = controls.controls;
+  // In Foundry V12+ and V13, the array of control groups is in controls.controls
+  const groups = controls.controls;
+  if (!Array.isArray(groups)) return;
 
-  const tokenControls = buttons.find((c: any) => c.name === "token");
+  const tokenControls = groups.find((c: any) => c.name === "token");
   if (!tokenControls) return;
 
   tokenControls.tools.push({
@@ -19,4 +20,5 @@ Hooks.on("getSceneControlButtons", (controls: any) => {
     onClick: () => new RagControlPanel().render(true)
   });
 });
+
 
