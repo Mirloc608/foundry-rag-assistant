@@ -7,8 +7,22 @@ Hooks.once("init", () => {
   registerSettings();
 });
 
+
 Hooks.on("getSceneControlButtons", (controls) => {
   const tokenControls = controls.find(c => c.name === "token");
+
+Hooks.on("getSceneControlButtons", (controls: any) => {
+  const groups = controls.controls;
+  if (!groups || typeof groups !== "object") return;
+
+  // Dynamically detect the token controls group
+  const tokenControls =
+    groups["token"] ||
+    groups["tokens"] ||
+    Object.values(groups).find((g: any) =>
+      typeof g?.name === "string" && g.name.toLowerCase().includes("token")
+    );
+
   if (!tokenControls) return;
 
   tokenControls.tools.push({
@@ -20,15 +34,18 @@ Hooks.on("getSceneControlButtons", (controls) => {
   });
 });
 
+Hooks.on("renderChatLog", (_app: any, html: HTMLElement) => {
+  const jq = $(html);
+
 
 Hooks.on("renderChatLog", (app, html, data) => {
   const controls = html.find(".control-buttons");
   if (!controls.length) return;
 
   const btn = $(
-    `<a class="rag-chat-button" title="RAG Assistant">
+     <a class="rag-chat-button" title="RAG Assistant">
        <i class="fas fa-brain"></i>
-     </a>`
+     </a>
   );
 
   btn.on("click", () => game.ragAssistant.openPanel());
@@ -50,4 +67,18 @@ class RAGAssistantApp extends Application {
 
 Hooks.once("ready", () => {
   game.ragAssistant = new RAGAssistantApp();
+
+  const button = $(
+    <a class="rag-chat-button">
+      <i class="fas fa-brain"></i> ${game.i18n.localize("RAG.ChatTitle")}
+    </a>
+  );
+
+  button.on("click", ev => {
+    ev.preventDefault();
+    new RagChatSidebar().render(true);
+  });
+
+  jq.find(".chat-control-icon").last().after(button);
+
 });
