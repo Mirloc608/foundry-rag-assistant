@@ -119,5 +119,22 @@ export class RagControlPanel extends Application {
 
       ui.notifications?.info("RAG: Journals ingested.");
     });
+
+    html.find("[data-action='clear-scene']").on("click", async ev => {
+      ev.preventDefault();
+      const scene = game.scenes?.current;
+      if (!scene) {
+        ui.notifications?.warn("RAG: No active scene.");
+        return;
+      }
+
+      const base = getBackendBase();
+      await this._fetchJSON(`${base}/clear-scene`, {
+        method: "POST",
+        body: JSON.stringify({ sceneId: scene.id })
+      });
+
+      ui.notifications?.info("RAG: Scene memory cleared.");
+    });
   }
 }

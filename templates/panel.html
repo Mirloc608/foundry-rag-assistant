@@ -1,0 +1,152 @@
+<div class="rag-panel">
+  <header class="rag-header">
+    <div class="rag-title">RAG Assistant</div>
+    <div class="rag-subtitle">
+      Backend:
+      <span class="rag-backend-url">{{backendUrl}}</span> |
+      Model:
+      <span class="rag-model">{{model}}</span> |
+      Memory:
+      <span class="rag-memory">{{#if memoryEnabled}}On{{else}}Off{{/if}}</span>
+      {{#if streaming}}
+        <span class="rag-streaming-indicator">● streaming</span>
+      {{/if}}
+    </div>
+  </header>
+
+  <nav class="rag-tabs">
+    <button class="rag-tab-button active" data-rag-tab="chat">Chat</button>
+    <button class="rag-tab-button" data-rag-tab="context">Context</button>
+    <button class="rag-tab-button" data-rag-tab="gm-tools">GM Tools</button>
+    <button class="rag-tab-button" data-rag-tab="settings">Settings</button>
+  </nav>
+
+  <section class="rag-tab-panels">
+    <!-- Chat tab -->
+    <div class="rag-tab-panel active" data-rag-panel="chat">
+      <div id="rag-chat-messages" class="rag-chat-messages">
+        {{#each messages}}
+          <div class="rag-message rag-message-{{role}} {{#if streaming}}rag-message-streaming{{/if}}">
+            <div class="rag-message-meta">
+              <span class="rag-message-role">{{role}}</span>
+              <span class="rag-message-ts">{{ts}}</span>
+            </div>
+            <div class="rag-message-content">{{content}}</div>
+          </div>
+        {{/each}}
+      </div>
+
+      <form id="rag-chat-form" class="rag-chat-form">
+        <textarea
+          id="rag-chat-input"
+          class="rag-chat-input"
+          rows="3"
+          placeholder="Ask about the current scene, tokens, or rules..."
+        ></textarea>
+        <button type="submit" class="rag-chat-send">
+          Send
+        </button>
+      </form>
+
+      {{#if streamingError}}
+        <div class="rag-error">
+          {{streamingError}}
+        </div>
+      {{/if}}
+    </div>
+
+    <!-- Context tab -->
+    <div class="rag-tab-panel" data-rag-panel="context">
+      <h3>Scene Context & Memory</h3>
+      <p>This is the JSON payload sent to the backend alongside your prompt.</p>
+      <pre id="rag-context-json" class="rag-context-json"></pre>
+    </div>
+
+    <!-- GM Tools tab -->
+    <div class="rag-tab-panel" data-rag-panel="gm-tools">
+      <h3>GM Tools</h3>
+      <p>
+        Some tools are GM-only. Players can still request summaries and
+        descriptions.
+      </p>
+
+      <div class="rag-gm-tools-grid">
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="summarize-scene"
+          data-rag-prompt="Summarize the current scene for the GM."
+        >
+          Summarize Scene
+        </button>
+
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="summarize-combat"
+          data-rag-prompt="Summarize the current combat, including key threats and opportunities."
+        >
+          Summarize Combat
+        </button>
+
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="summarize-npcs"
+          data-rag-prompt="Summarize the important NPCs in this scene and their current goals."
+        >
+          Summarize NPCs
+        </button>
+
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="read-aloud"
+          data-rag-gm-only="true"
+          data-rag-prompt="Generate a vivid, read-aloud description of the current scene for the players."
+        >
+          Read-Aloud Description (GM)
+        </button>
+
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="encounter-ideas"
+          data-rag-gm-only="true"
+          data-rag-prompt="Propose 3 encounter ideas that fit the current scene and party level."
+        >
+          Encounter Ideas (GM)
+        </button>
+
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="highlight-tokens"
+          data-rag-prompt="Highlight the most important tokens in the current scene."
+        >
+          Highlight Important Tokens
+        </button>
+
+        <button
+          class="rag-gm-tool-button"
+          data-rag-gm-tool="reveal-tokens"
+          data-rag-gm-only="true"
+          data-rag-prompt="Reveal any hidden tokens that are relevant to the current scene."
+        >
+          Reveal Relevant Tokens (GM)
+        </button>
+      </div>
+    </div>
+
+    <!-- Settings tab -->
+    <div class="rag-tab-panel" data-rag-panel="settings">
+      <h3>Settings</h3>
+      <p>
+        Core configuration (backend URL, token, model, memory) is managed via
+        <strong>Configure Settings → Module Settings → Foundry RAG Assistant</strong>.
+      </p>
+      <p>
+        Use this panel to verify that the correct backend URL and model are in
+        use for this world.
+      </p>
+      <p>
+        Scene memory is currently:
+        <strong>{{#if memoryEnabled}}Enabled{{else}}Disabled{{/if}}</strong>.
+      </p>
+    </div>
+  </section>
+</div>

@@ -1,4 +1,4 @@
-import { getBackendBase, getAuthToken } from "./settings";
+import { getBackendBase, getAuthToken, getSelectedModel } from "./settings";
 
 export class RagChatSidebar extends Application {
   static get defaultOptions() {
@@ -36,6 +36,7 @@ export class RagChatSidebar extends Application {
       const scene = game.scenes?.current;
       const base = getBackendBase();
       const url = `${base}/chat`;
+      const model = getSelectedModel();
 
       const headers: HeadersInit = { "Content-Type": "application/json" };
       const token = getAuthToken();
@@ -47,6 +48,7 @@ export class RagChatSidebar extends Application {
           headers,
           body: JSON.stringify({
             content,
+            model,
             scene: scene ? { id: scene.id, name: scene.name } : null
           })
         });

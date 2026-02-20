@@ -1,8 +1,8 @@
 {
   "id": "foundry-rag-assistant",
   "title": "Foundry RAG Assistant",
-  "description": "Scene-aware RAG assistant for Foundry VTT.",
-  "version": "1.0.2",
+  "description": "AI Assistant for GMs and Players in Foundry VTT (Game System Agnostic).",
+  "version": "1.1.0",
   "compatibility": {
     "minimum": "11",
     "verified": "13"
@@ -24,12 +24,5 @@
       "name": "English",
       "path": "lang/en.json"
     }
-  ],
-  "templates": [
-    "templates/rag-panel.hbs",
-    "templates/rag-chat.hbs"
-  ],
-  "url": "https://github.com/Mirloc608/foundry-rag-assistant",
-  "manifest": "https://raw.githubusercontent.com/Mirloc608/foundry-rag-assistant/main/module.json",
-  "download": "https://github.com/Mirloc608/foundry-rag-assistant/archive/refs/heads/main.zip"
+  ]
 }
